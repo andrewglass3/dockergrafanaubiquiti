@@ -23,17 +23,28 @@ We then need to add a datasource to our instance for influxdb http://localhost:3
 Add influxdb and set:
 
 Name - telegraf (this is set in your telegraf.conf file
+
 Type - Influxdb
+
 URL  - http://localhost:8086
+
 Access - Server (default)
+
 Leave the Auth tick boxes empty
+
 Leave skip TLS Verification tick box empty
+
 Advanced Http Settings
+
 Whitelist Cookies - leave empty
 
+
 InfluxDB Details - these should match the details set in the Output Plugins section of the telegraf.conf
+
 Database - telegraf
+
 User     - admin
+
 Password - admin
 
 Click Save & Test and it should confirm connection with - Data source is working in a green box.
