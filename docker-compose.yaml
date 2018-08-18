@@ -7,7 +7,7 @@ services:
     user: "472"
     restart: always
     volumes:
-            - /home/andrew/git/grafana/grafanaunifi/grafanadata:/var/lib/grafana
+            - /yourpersistent-data-location-here/grafanadata:/var/lib/grafana
 
   
   telegraf:
@@ -20,9 +20,9 @@ services:
      - influxdb
     restart: always
     volumes:
-            - /home/andrew/git/grafana/grafanaunifi/configdata/:/etc/telegraf/
-            - /home/andrew/git/grafana/grafanaunifi/configdata/telegraf.conf:/etc/telegraf/telegraf.conf:ro
-            - /home/andrew/git/grafana/grafanaunifi/mibsdir:/root/.snmp/mibs
+            - /yourpersistent-data-location-here/configdata/:/etc/telegraf/
+            - /yourpersistent-data-location-here/configdata/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+            - /yourpersistent-data-location-here/mibsdir:/root/.snmp/mibs
 
   influxdb:
     image: influxdb
@@ -30,4 +30,4 @@ services:
     ports:
      - "8086:8086"
     volumes:
-            - /home/andrew/git/grafana/grafanaunifi/influxdata:/var/lib/influxdb
+            - /yourpersistent-data-location-here/influxdata:/var/lib/influxdb
