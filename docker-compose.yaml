@@ -1,0 +1,33 @@
+version: '2'
+services:
+  grafana:
+    image: grafana/grafana:5.1.0
+    ports:
+     - "3000:3000"
+    user: "472"
+    restart: always
+    volumes:
+            - /home/andrew/git/grafana/grafanaunifi/grafanadata:/var/lib/grafana
+
+  
+  telegraf:
+    image: nuntz/telegraf-snmp
+#    network_mode: container:influxdb
+#    security_opt: 
+#     - label:user:root
+#     - label:role:root
+    links:
+     - influxdb
+    restart: always
+    volumes:
+            - /home/andrew/git/grafana/grafanaunifi/configdata/:/etc/telegraf/
+            - /home/andrew/git/grafana/grafanaunifi/configdata/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+            - /home/andrew/git/grafana/grafanaunifi/mibsdir:/root/.snmp/mibs
+
+  influxdb:
+    image: influxdb
+    restart: always
+    ports:
+     - "8086:8086"
+    volumes:
+            - /home/andrew/git/grafana/grafanaunifi/influxdata:/var/lib/influxdb

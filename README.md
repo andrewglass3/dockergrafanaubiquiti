@@ -1,2 +1,2 @@
-# dockergrafanaubiquiti
-Ubiquiti Edgerouter and Unifi Access Points in Grafana running on docker
+# grafanagockerubiquiti
+My configs for grafana/telegraph/influxdb to show Ubiquiti Access Points and Edgerouter X
