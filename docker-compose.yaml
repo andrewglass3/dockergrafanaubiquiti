@@ -31,3 +31,17 @@ services:
      - "8086:8086"
     volumes:
             - /yourpersistent-data-location-here/influxdata:/var/lib/influxdb
+
+  haproxy:
+    image: jclebreton/https-proxy
+    container_name: haproxy
+    restart: always
+    depends_on:
+      - grafana
+    links:
+      - grafana
+    environment:
+      - BACKEND_SERVER=grafana
+      - BACKEND_PORT=3000
+    ports:
+      - 443:443
